@@ -1,6 +1,16 @@
 name: golang-pipeline
 on: push
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: golang:1.24.3
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build
+        working-directory: ./hello-golang
+        run: go build -v ./...
   test:
     runs-on: ubuntu-latest
     container: golang:1.24.3
